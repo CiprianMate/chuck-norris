@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+a:hover {
+    text-decoration: none;
+}
+
+input.form-control {
+    border-radius: 0;
+    border-style: dotted;
+}
+
+.error-container {
+    display: block;
+}
+
+.alert {
+    border-radius: 0;
+    border-style: dotted;
+}

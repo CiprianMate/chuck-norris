@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<ng-sidebar-container>
+  <ng-sidebar [(opened)]="_opened" mode="push" position="left" [sidebarClass]="'sidebar'" [ariaLabel]="'sidebar'">
+    <p>Sidebar contents</p>
+    <button class="control" (click)="_toggleOpened()">Close sidebar</button>
+    <p><a closeSidebar>This will close the sidebar too</a></p>
+  </ng-sidebar>
+
+
+  <header class="header">
+    <button (click)="_toggleOpened()" class="header__toggle">Toggle sidebar</button>
+    <!--span>{{loggedIn | async}}</span-->
+    <button class="btn btn-primary" [routerLink]="['/login']">Logout</button>
+  </header>
+
+
+  <section class="contents">
+    <app-alert class="error-container col-md-8 offset-md-2 pt-5"></app-alert>
+    <router-outlet></router-outlet>
+  </section>
+</ng-sidebar-container>
