@@ -1,11 +1,11 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map'
 
 @Injectable()
-export class AuthenticationService implements OnInit {
+export class AuthenticationService {
 
     // change loggedIn to a subject
     private loggedIn: Subject<boolean> = new Subject<boolean>();
@@ -16,10 +16,6 @@ export class AuthenticationService implements OnInit {
     }
 
     constructor(private http: Http) {
-        this.loggedIn.next(!!localStorage.getItem('currentUser'));
-    }
-
-    ngOnInit() {
         this.loggedIn.next(!!localStorage.getItem('currentUser'));
     }
 
@@ -41,5 +37,6 @@ export class AuthenticationService implements OnInit {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        this.loggedIn.next(!!localStorage.getItem('currentUser'));
     }
 }

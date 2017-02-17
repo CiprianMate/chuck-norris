@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ng2-bootstrap';
 import { AuthGuard } from './common/auth.guard';
+import { Joke } from './common/joke';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +18,7 @@ import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
 import { AlertService } from './_services/alert.service';
 import { AlertComponent } from './alert/alert.component';
+import { ChuckJokeService } from './_services/chuck-joke.service';
 
 import { fakeBackendProvider } from './common/fake-backend';
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -42,12 +44,14 @@ import { BaseRequestOptions } from '@angular/http';
   ],
   providers: [
     AuthGuard,
+    Joke,
     AuthenticationService,
     AlertService,
     UserService,
+    ChuckJokeService,
     // providers used to create fake backend
-    fakeBackendProvider,
-    MockBackend,
+    //fakeBackendProvider,
+    //MockBackend,
     BaseRequestOptions],
   bootstrap: [AppComponent]
 })
